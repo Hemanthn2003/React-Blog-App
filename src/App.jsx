@@ -8,8 +8,8 @@ import NewPost from './NewPost'
 import PostPage from './PostPage'
 import About from './About'
 import Missing from './Missing'
-
-import { Route, Routes } from 'react-router-dom';
+import { format } from 'date-fns'
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 function App() {
   const [posts, setPosts] = useState([ {
@@ -39,6 +39,35 @@ function App() {
     ])
   const [search, setSearch] = useState('')
   const [searchResult, setSearchResult] = useState([])
+   const[postTitle, setPostTitle] = useState('')
+  const[postBody, setPostBody] = useState('')
+  const navigate = useNavigate();
+useEffect(()=>{
+const filteredResults= posts.filter(post =>((post.body).toLowerCase()).includes(search.toLowerCase())
+|| ((post.body).toLowerCase()).includes(search.toLowerCase()));
+setSearchResult(filteredResults.reverse());
+},[ posts, search])
+
+
+  const handleDelete = (id)=>{
+  const postsList = posts.filter(post => post.id !== id);
+  setPosts(postsList);
+  navigate("/");
+ }
+
+
+ const handleSubmit = (e)=>{
+e.preventDefault();
+const id = posts.length? posts[posts.length-1].id+1 : 1;
+const datetime=format(new Date(),'MMMM dd, yyyy pp');
+const newPost ={id, title: postTitle, body: postBody};
+const allPost =[ ...posts, newPost ];
+setPosts(allPost);
+setPostTitle('');
+setPostBody('');
+navigate("/");
+
+}
   return (
     <div className='App'>
 
@@ -47,11 +76,17 @@ function App() {
 
       <Routes>
 
-        <Route path="/" element={<Home posts={posts}/>} />
+        <Route path="/" element={<Home posts={searchResult}/>} />
 
-        <Route path="/post" element={<NewPost />} />
+        <Route path="/post" element={<NewPost 
+        handleSubmit={handleSubmit}
+        postTitle={postTitle}
+        setPostTitle={setPostTitle}
+        postBody={postBody}
+        setPostBody={setPostBody}
+        />} />
 
-        <Route path="/post/:id" element={<PostPage />} />
+        <Route path="/post/:id" element={<PostPage posts={posts} handleDelete={handleDelete} />} />
 
         <Route path="/about" element={<About />} />
 
