@@ -125,15 +125,26 @@ body {
   cursor: pointer;
 }
 
-.Home, .NewPost, .PostPage, .About, .Missing {
+.Home{
   width: 100%;
   flex-grow: 1;
   padding: 1rem;
   overflow-y: auto;
   background-color: #fff;
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
-
+.NewPost, .PostPage, .About, .Missing {
+  width: 100%;
+  flex-grow: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  background-color: #fff;
+  
+}
 .post {
+    text-align: left;
   margin-top: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid lightgray;
@@ -201,9 +212,10 @@ body {
 }
 
 .Missing h2, .PostPage h2, 
-.Missing p, .PostPage p {
+.Missing p, .PostPage p  .NewPost p{
   margin-bottom: 1rem;
 }
+
 
 .PostPage button {
   height: 48px;
@@ -211,11 +223,16 @@ body {
   border-radius: 0.25rem;
   padding: 0.5rem;
   font-size: 1rem;
-  background-color: red;
   color: #fff;
   cursor: pointer;
+  margin-right: 0.5rem
 }
-
+.deleteButton {
+  background-color: red;
+}
+.editButton {
+  background-color: #333;
+}
 .statusMsg {
   margin-top: 2rem;
 }
