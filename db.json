@@ -1,27 +1,28 @@
 {
   "posts": [
     {
-      "id": "1",
+      "id": 1,
       "title": "My Girlfriend",
       "datetime": "March 16, 2025 11:11:11 AM",
-      "body": " It's my girlfriends birthday!"
+      "body": "It's my girlfriend's birthday!"
     },
     {
-      "id": "3",
+      "id": 2,
       "title": "My Mother",
       "datetime": "July 23, 2026 11:17:36 AM",
-      "body": "It's my Mothers Birtday"
+      "body": "It's my mother's birthday"
     },
     {
-      "id": "4",
+      "id": 3,
       "title": "My Father",
       "datetime": "Dec 29, 2026 11:17:36 AM",
-      "body": "My Father's Birthday"
+      "body": "My father's birthday"
     },
     {
-      "id": "41",
-      "title": "myself",
+      "id": 4,
+      "title": "Myself",
       "datetime": "March 11, 2026 5:18:44 PM",
-      "body": "i am a good boy \n"
+      "body": "I am a good boy"
     }
-  ]}
+  ]
+}
